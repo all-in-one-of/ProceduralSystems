@@ -1,0 +1,5 @@
+<sbspresets count="1" formatversion="1.1">
+  <sbspreset pkgurl="pkg://Meat" label="" >
+  <presetinput identifier="$outputsize" uid="2660790582" type="8" value="10,10" />
+ </sbspreset>
+</sbspresets>

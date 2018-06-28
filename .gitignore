@@ -72,3 +72,6 @@ substance_cache/
 
 # Adobe audition cache files
 *.pkf
+
+# backup folder contents
+[Bb]ackup

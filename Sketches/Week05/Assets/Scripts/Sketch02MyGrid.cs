@@ -7,6 +7,7 @@ public class Sketch02MyGrid : MonoBehaviour
 {
     public int xSize, ySize;
     private Vector3[] vertices;
+    private Mesh mesh;
 
     public void Awake()
     {
@@ -15,7 +16,10 @@ public class Sketch02MyGrid : MonoBehaviour
 
     private IEnumerator Generate()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
+        WaitForSeconds wait = new WaitForSeconds(0.08f);
+
+        GetComponent<MeshFilter>().mesh = mesh = new Mesh();
+        mesh.name = "Procedural Grid";
 
         int arraySize = (xSize + 1) * (ySize + 1);
         vertices = new Vector3[arraySize];
@@ -24,6 +28,21 @@ public class Sketch02MyGrid : MonoBehaviour
             for (int x = 0; x <= xSize; x++, i++)
             {
                 vertices[i] = new Vector3(x, y);
+                mesh.vertices = vertices;
+            }
+        }
+
+        int[] triangles = new int[xSize * ySize * 6];
+        for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++)
+        {
+            for (int x = 0; x < xSize; x++, ti += 6, vi++)
+            {
+                triangles[ti] = vi;
+                triangles[ti + 3] = triangles[ti + 2] = vi + 1;
+                triangles[ti + 4] = triangles[ti + 1] = vi + xSize + 1;
+                triangles[ti + 5] = vi + xSize + 2;
+                mesh.triangles = triangles;
+
                 yield return wait;
             }
         }

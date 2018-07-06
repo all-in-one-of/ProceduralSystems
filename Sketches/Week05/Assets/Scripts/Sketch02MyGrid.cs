@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-public class MyGrid : MonoBehaviour
+public class Sketch02MyGrid : MonoBehaviour
 {
     public int xSize, ySize;
-    public GameObject point;
     private Vector3[] vertices;
 
     public void Awake()
@@ -25,7 +24,6 @@ public class MyGrid : MonoBehaviour
             for (int x = 0; x <= xSize; x++, i++)
             {
                 vertices[i] = new Vector3(x, y);
-                Instantiate(point, vertices[i], Quaternion.identity);
                 yield return wait;
             }
         }

@@ -9,7 +9,6 @@ public class CreateCube : MonoBehaviour
     public int xSize, ySize, zSize;
     private Mesh mesh;
     private Vector3[] vertices;
-    private Vector3[] normals;
 
     void Awake()
     {
@@ -22,7 +21,8 @@ public class CreateCube : MonoBehaviour
         mesh.name = "Procedural Cube";
 
         CreateVertices();
-        GenerateTriangles();
+        CreateTriangles();
+        mesh.RecalculateNormals();
     }
     private void CreateVertices()
     {
@@ -33,7 +33,6 @@ public class CreateCube : MonoBehaviour
             (xSize - 1) * (zSize - 1) +
             (ySize - 1) * (zSize - 1)) * 2;
         vertices = new Vector3[cornerVertices + edgeVertices + faceVertices];
-        normals = new Vector3[vertices.Length];
 
         int v = 0;
         for (int y = 0; y <= ySize; y++)
@@ -77,7 +76,6 @@ public class CreateCube : MonoBehaviour
         }
 
         mesh.vertices = vertices;
-        mesh.normals = normals;
     }
 
     private void SetVertex(int i, int x, int y, int z)
@@ -85,7 +83,7 @@ public class CreateCube : MonoBehaviour
         vertices[i] = new Vector3(x, y, z);
     }
 
-    private void GenerateTriangles()
+    private void CreateTriangles()
     {
         int quads = (xSize * ySize + xSize * zSize + ySize * zSize) * 2;
         int[] triangles = new int[quads * 6];
@@ -118,7 +116,7 @@ public class CreateCube : MonoBehaviour
         int vMid = vMin + 1;
         int vMax = v + 2;
 
-        for (int z = 1; zSize < zSize - 1; z++, vMin--, vMid++, vMax++)
+        for (int z = 1; z < zSize - 1; z++, vMin--, vMid++, vMax++)
         {
             t = SetQuad(triangles, t, vMin, vMid, vMin - 1, vMid + xSize - 1);
             for (int x = 1; x < xSize - 1; x++, vMid++)
@@ -142,7 +140,7 @@ public class CreateCube : MonoBehaviour
     private int CreateBottomFace(int[] triangles, int t, int ring)
     {
         int v = 1;
-        int vMid = vertices.Length - (xSize - 1) * (zSize = 1);
+        int vMid = vertices.Length - (xSize - 1) * (zSize - 1);
         t = SetQuad(triangles, t, ring - 1, vMid, 0, 1);
         for (int x = 1; x < xSize - 1; x++, v++, vMid++)
         {
@@ -159,7 +157,9 @@ public class CreateCube : MonoBehaviour
             t = SetQuad(triangles, t, vMin, vMid + xSize - 1, vMin + 1, vMid);
             for (int x = 1; x < xSize - 1; x++, vMid++)
             {
-                t = SetQuad(triangles, t, vMid + xSize - 1, vMid + xSize, vMid, vMid + 1);
+                t = SetQuad(
+                    triangles, t,
+                    vMid + xSize - 1, vMid + xSize, vMid, vMid + 1);
             }
             t = SetQuad(triangles, t, vMid + xSize - 1, vMax + 1, vMid, vMax);
         }

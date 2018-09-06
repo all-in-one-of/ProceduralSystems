@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 292404996}
   - component: {fileID: 292404995}
   - component: {fileID: 292404994}
+  - component: {fileID: 292404998}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -228,6 +229,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292404998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 292404993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feab6a1f853a4305b4194bdc031a45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &398499835
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +361,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 657756002}
-  - component: {fileID: 657756003}
   m_Layer: 0
   m_Name: c5fafe9e4dbd446a38dab72f371f0e16
   m_TagString: Untagged
@@ -370,19 +381,6 @@ Transform:
   m_Father: {fileID: 810861707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &657756003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 657756001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba449d1ca2d84ead6595000d41c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Settings:
-  - {fileID: 890912817}
 --- !u!1 &810861706
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,24 +410,6 @@ Transform:
   m_Father: {fileID: 83888505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &890912817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c011637fb4c894c56a9178092966b5ac, type: 3}
-  m_Name: 1468debd-939e-4e3e-aef5-98a1f619c613
-  m_EditorClassIdentifier: 
-  m_DisplayName: Animation
-  m_Id: 3bcb7f11-2ac9-4da1-b5b5-3e6f1472e935
-  gameObject: {fileID: 0}
-  enabled: 0
-  recursive: 1
-  fold: 1
-  bindingTypeName: []
 --- !u!1 &963330651
 GameObject:
   m_ObjectHideFlags: 0

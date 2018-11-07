@@ -75,3 +75,13 @@ substance_cache/
 
 # backup folder contents
 [Bb]ackup/
+
+# houdini cached geometry
+geo/
+*.bgeo
+*.bgeo.sc
+
+# houdini cached simulations
+sim/
+*.sim
+*.sim.sc
